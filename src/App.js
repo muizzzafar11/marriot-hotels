@@ -8,9 +8,9 @@ function App() {
       <header className="App-header">
         <img className="App-logo" src={homeImg} alt="logo" />
       </header>
-      {/* <body>
+      <body>
         <img className="home-image" src={homeImg} alt="logo" />
-      </body> */}
+      </body>
     </div>
   );
 }
