@@ -1,16 +1,24 @@
-import logo from './logo.svg';
-import homeImg from './assets/home-image.png'
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import NavTabs from './components/Tabs';
+import Home from './screens/HomeScreen';
+import About from './screens/AboutScreen';
+import Reviews from './screens/ReviewScreen';
+import Booking from './screens/BookingScreen';
+import Receipt from './screens/ReceiptScreen';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={homeImg} className="App-logo" alt="logo" />
-      </header>
-      <body>
-        <img className="App-logo" src={logo} alt="logo" />
-      </body>
+        <NavTabs/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="Home" element={<Home/>}/>
+          <Route path="About" element={<About/>}/>
+          <Route path="Reviews" element={<Reviews/>}/>
+          <Route path="Booking" element={<Booking/>}/>
+          <Route path="Receipt" element={<Receipt/>}/>
+        </Routes>
     </div>
   );
 }
