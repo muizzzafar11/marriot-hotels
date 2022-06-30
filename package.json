@@ -1,7 +1,7 @@
 {
   "name": "marriot-hotels",
   "version": "0.1.0",
-  "homepage": "https://muizzzafar11.github.io/marriot-hotels/Home",
+  "homepage": "https://muizzzafar11.github.io/marriot-hotels",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",
