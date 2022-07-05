@@ -28,7 +28,7 @@ const roomArr = [
 
 export default function HomeScreen() {
     return (
-      <div>
+      <div className='page-body'>
         <img className="img-fluid" src={homeImage} alt="logo" />
         <div className='row mt-4'>
           <h2 className='col-12 col-md-6 my-auto pt-4'>

@@ -10,7 +10,7 @@ export default function ReceiptScreen() {
     const [showButton, setShowButton] = React.useState(true);
 
     return (
-        <div>
+        <div className='page-body'>
             <h1 className='text-center mb-2'>Booking Confirmation</h1>
             <img className='img-fluid' src={homeImage}/>
             <h4>{roomInfo.name}</h4>

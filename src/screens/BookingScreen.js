@@ -31,7 +31,7 @@ export default function BookingScreen() {
     
     return (
         
-        <div>
+        <div className='page-body'>
             <div>
                 <Modal
                 open={open}

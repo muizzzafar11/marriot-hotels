@@ -9,8 +9,7 @@ export default function ReviewScreen() {
     const [reviewArr, setReviewArr] = React.useState(JSON.parse(localStorage.getItem("allEntries")) || []);
 
     return (
-        
-        <div>
+        <div className='page-body'>
             <h2 className='mb-4 text-center'>Previous Reviews</h2>
             <DisplayAllReviews reviewsArr={reviewArr}/>
 

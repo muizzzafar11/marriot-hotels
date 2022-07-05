@@ -29,14 +29,14 @@ const NavTab = () => {
   };
 
   return (
-    <AppBar sx={{ bgcolor: "transparent" }} position="static">
+    <AppBar sx={{ bgcolor: "white" }} position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <Link to="/Home">
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="/Home"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -49,26 +49,27 @@ const NavTab = () => {
           >
             <img src={logo} alt="logo" className='img-fluid' style={{width: 80}}/>
           </Typography>
+          </Link>
 
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/Home"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: "#198754",
-              textDecoration: 'none',
-            }}
-          >
-            <img src={logo} alt="logo" className='img-fluid' style={{width: 80}}/>
-          </Typography>
-
+          <Link to="/Home">
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              sx={{
+                mr: 2,
+                display: { xs: 'flex', md: 'none' },
+                flexGrow: 1,
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: "#198754",
+                textDecoration: 'none',
+              }}
+            >
+              <img src={logo} alt="logo" className='img-fluid' style={{width: 80}}/>
+            </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none',  justifyContent: 'flex-end' } }}>
             <IconButton
               size="large"
