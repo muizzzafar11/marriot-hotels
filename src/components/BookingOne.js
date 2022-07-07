@@ -1,13 +1,12 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
-import { LocalizationProvider } from '@mui/x-date-pickers-pro';
-import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 export default function BookingOne() {
     const [floor, setFloor] = React.useState('');
@@ -22,11 +21,12 @@ export default function BookingOne() {
         window.localStorage.setItem('person', event.target.value);
     };
 
-    const [value, setValue] = React.useState([null, null]);
+    const [checkin, setCheckin] = React.useState(null);
+    const [checkout, setCheckout] = React.useState(null);
 
     return (
         <div>
-            <FormControl fullWidth>
+            <FormControl fullWidth className='mb-4'>
                 <InputLabel id="demo-simple-select-label">Floors</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
@@ -43,7 +43,7 @@ export default function BookingOne() {
                 </Select>
             </FormControl>
 
-            <FormControl fullWidth>
+            <FormControl fullWidth className='mb-4'>
                 <InputLabel id="demo-simple-select-label">Person</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
@@ -59,27 +59,34 @@ export default function BookingOne() {
                     <MenuItem value={5}>5 Person</MenuItem>
                 </Select>
             </FormControl>
-            
-            <LocalizationProvider
-                dateAdapter={AdapterDateFns}
-                localeText={{ start: 'Check-in', end: 'Check-out' }}
-            >
-                <DateRangePicker
-                value={value}
-                onChange={(newValue) => {
-                    setValue(newValue);
-                    window.localStorage.setItem('checkin', newValue[0]);
-                    window.localStorage.setItem('checkout', newValue[1]);
-                }}
-                renderInput={(startProps, endProps) => (
-                    <React.Fragment>
-                    <TextField {...startProps} />
-                    <Box sx={{ mx: 2 }}> to </Box>
-                    <TextField {...endProps} />
-                    </React.Fragment>
-                )}
-                />
-            </LocalizationProvider>
+
+            <div className='d-flex'>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                        label="Checkin"
+                        value={checkin}
+                        shouldDisableDate={(date) => date.getTime() < Date.now()}
+                        onChange={(newValue) => {
+                            setCheckin(newValue);
+                            window.localStorage.setItem('checkin', newValue);
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                </LocalizationProvider>
+                <p className='my-auto mx-3'>to</p>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                        label="Checkout"
+                        value={checkout}
+                        shouldDisableDate={(date) => date.getTime() <= checkin || date.getTime() < Date.now()}
+                        onChange={(newValue) => {
+                            setCheckout(newValue);
+                            window.localStorage.setItem('checkout', newValue);
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                </LocalizationProvider>
+            </div>
         </div>
     );
 }
