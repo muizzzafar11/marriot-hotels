@@ -5,6 +5,7 @@ import BookingTwo from '../components/BookingTwo';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const style = {
     position: 'absolute',
@@ -25,6 +26,7 @@ export default function BookingScreen() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const { t } = useTranslation();
     
     return (
         
@@ -68,9 +70,9 @@ export default function BookingScreen() {
                 </button>
             </div>
 
-            <h1 className='mt-5'>{roomDetails.name}</h1>
-            <h3>${roomDetails.price}/night</h3>
-            <p className='my-4' style={{fontSize: 22}}>{roomDetails.description}</p>
+            <h1 className='mt-5'>{t(roomDetails.name)}</h1>
+            <h3>${roomDetails.price}/{t('night')}</h3>
+            <p className='my-4' style={{fontSize: 22}}>{t(roomDetails.description)}</p>
 
             <div className='mt-4'>
                 {renderDiv}
@@ -89,7 +91,7 @@ export default function BookingScreen() {
                         else
                             alert('Please fill all the fields correctly')
                     }
-                }}>Next</button>
+                }}>{t('next')}</button>
             </div>
 
         </div>
@@ -126,20 +128,21 @@ function getRoomDetailsFromLocalStorage() {
 }
 
 function BankCardModalContent() {
+    const { t } = useTranslation();
     return (
         <div style={{minWidth: 250}}>
-            <h1 className='mb-3'>Credit Card Info</h1>
+            <h1 className='mb-3'>{t('credit_card_info')}</h1>
             <div className="mb-3">
-                <label htmlFor="name">Full name</label>
-                <input onInput={e => {window.localStorage.setItem('ccName', e.target.value)}} type="text" className="form-control w-100" id="name" placeholder="Enter Your Name" required/>
+                <label htmlFor="name">{t('full_name')}</label>
+                <input onInput={e => {window.localStorage.setItem('ccName', e.target.value)}} type="text" className="form-control w-100" id="name" placeholder={t('enter_name')} required/>
             </div>
             <div className="">
-                <label htmlFor="cardNum">Credit Card Number</label>
+                <label htmlFor="cardNum">{t('ccnum')}</label>
                 <input onInput={e => {window.localStorage.setItem('ccNum', e.target.value)}} type="text" className="form-control" id="cardNum" placeholder="0000 0000 0000 0000" required/>
             </div>
             <div className="row">
             <div className="form-group col-sm-4 mt-3">
-                <label htmlFor="ccmonth">Month</label>
+                <label htmlFor="ccmonth">{t('month')}</label>
                 <select onSelect={e => {window.localStorage.setItem('ccMonth', e.target.value)}} className="form-control" id="ccmonth">
                     <option>1</option>
                     <option>2</option>
@@ -156,7 +159,7 @@ function BankCardModalContent() {
                 </select>
             </div>
             <div className="form-group col-sm-4 mt-3">
-                <label htmlFor="ccyear">Year</label>
+                <label htmlFor="ccyear">{t('year')}</label>
                 <select onSelect={e => {window.localStorage.setItem('ccYear', e.target.value)}} className="form-control" id="ccyear">
                     <option>2022</option>
                     <option>2023</option>
@@ -177,7 +180,7 @@ function BankCardModalContent() {
             </div>
             </div>
             <Link to='/Receipt'>
-                <button className='btn btn-success mt-3'>Book</button>
+                <button className='btn btn-success mt-3'>{t('book')}</button>
             </Link>
         </div>
     );

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import homeImage from '../assets/home-image.png'
 import './ReceiptScreen.css'
 
@@ -9,12 +10,13 @@ export default function ReceiptScreen() {
     const person = JSON.parse(window.localStorage.getItem('person'))
     const [renderDiv, setRenderDiv] = React.useState(<div></div>);
     const [showButton, setShowButton] = React.useState(true);
+    const { t } = useTranslation(); 
 
     return (
         <div className='page-body'>
             <h1 className='text-center mb-4'>Booking Confirmation</h1>
             <img className='img-fluid d-block w-100' style={{borderRadius: 25, height: 500, objectFit: 'cover'}} src={roomInfo.image}/>
-            <h2 className='mt-4'>{roomInfo.name}</h2>
+            <h2 className='mt-4'>{t(roomInfo.name)}</h2>
             <h3>${roomInfo.price}/night</h3>
             <div className='row d-flex justify-content-between my-4'>
                 <div className='col-6'>

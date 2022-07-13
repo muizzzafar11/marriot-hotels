@@ -6,6 +6,7 @@ import imageFour from '../assets/image-4.png'
 import imageFive from '../assets/image-5.png'
 import imageSix from '../assets/image-6.png'
 import BasicModal from '../components/Modal';
+import { useTranslation } from "react-i18next";
 
 class RoomInfo {
     constructor(name, price, description, image) {
@@ -17,27 +18,28 @@ class RoomInfo {
 }
 
 const roomArr = [
-    new RoomInfo('Single Bedroom Suite', 50, 
-    'Our single Bedroom Suite provides views over landscaped gardens. It has a seating area, ample storage, digital safe and mini fridge. It is elegantly furnished with handmade furniture include luxury en-suite facilities with complimentary amenities pack, flat screen LCD TV, tea/coffee making facilities, fan, hairdryer and the finest pure white linen and towels.',
+    new RoomInfo('title_single_suite', 50, 
+    'description_single_suite',
     imageOne),
-    new RoomInfo('Double Bedroom Suite', 70, 
-    'Our double Bedroom Suite provides views over landscaped gardens. It has a seating area, ample storage, digital safe and mini fridge. It is elegantly furnished with handmade furniture include luxury en-suite facilities with complimentary amenities pack, flat screen LCD TV, tea/coffee making facilities, fan, hairdryer and the finest pure white linen and towels.',
+    new RoomInfo('title_double_suite', 70, 
+    'description_double_suite',
     imageTwo),
-    new RoomInfo('Triple Bedroom Suite', 100, 
-    'Our triple Bedroom Suite provides views over landscaped gardens. It has a seating area, ample storage, digital safe and mini fridge. It is elegantly furnished with handmade furniture include luxury en-suite facilities with complimentary amenities pack, flat screen LCD TV, tea/coffee making facilities, fan, hairdryer and the finest pure white linen and towels.',
+    new RoomInfo('title_triple_suite', 100, 
+    'description_triple_suite',
     imageThree),
-    new RoomInfo('Single Bedroom & Toilet', 35, 
-    'Travelling on a limited budget? Try out our bedroom + toilet rooms which have a toilet attached with the bedroom and all other utilities included. It has a seating area, ample storage, and mini fridge. It is fully furnished with furniture include luxury facilities with flat screen LCD TV, tea/coffee making facilities, fan, hairdryer and the finest towels.',
+    new RoomInfo('title_single_bedroom', 35, 
+    'description_single_bedroom',
     imageFour),
-    new RoomInfo('Double Bedroom & Toilet', 50, 
-    'Travelling on a limited budget? Try out our bedroom + toilet rooms which have a toilet attached with the bedroom and all other utilities included. It has a seating area, ample storage, and mini fridge. It is fully furnished with furniture include luxury facilities with flat screen LCD TV, tea/coffee making facilities, fan, hairdryer and the finest towels.',
+    new RoomInfo('title_double_bedroom', 50, 
+    'description_double_bedroom',
     imageFive),
-    new RoomInfo('Triple Bedroom & Toilet', 65, 
-    'Travelling on a limited budget? Try out our bedroom + toilet rooms which have a toilet attached with the bedroom and all other utilities included. It has a seating area, ample storage, and mini fridge. It is fully furnished with furniture include luxury facilities with flat screen LCD TV, tea/coffee making facilities, fan, hairdryer and the finest towels.',
+    new RoomInfo('title_triple_bedroom', 65, 
+    'description_triple_bedroom',
     imageSix),
 ]
 
 export default function RoomCards(params) {
+    const { t } = useTranslation();
     return (
       <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3'>
         {
@@ -46,9 +48,9 @@ export default function RoomCards(params) {
             <div className="card mb-3">
               <img className="card-img-top" src={details.image} alt="Card image cap"/>
               <div className="card-body">
-                <h5 className="card-title">{details.name}</h5>
-                <h6>${details.price}/night</h6>
-                <h6>Rooms Available: 5</h6>
+                <h5 className="card-title">{t(details.name)}</h5>
+                <h6>${details.price}/{t('night')}</h6>
+                <h6>{t('rooms_available')}: 5</h6>
               </div>
               <div className="text-center my-3">
                 <BasicModal roomInfo={details}/>

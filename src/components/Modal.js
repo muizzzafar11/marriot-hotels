@@ -1,27 +1,28 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 export default function BasicModal(props) {
   const details = props.roomInfo
-
+  const { t } = useTranslation();
   return (
     <div>
       <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Select
+        {t('book')}
       </button>
       <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <img className="" style={{height: 250}} src={details.image} alt="logo" />
             <div className="modal-body text-start">
-              <h5>{details.name}</h5>
-              <h5>${details.price}/night</h5>
-              <p>{details.description}</p>
+              <h5>{t(details.name)}</h5>
+              <h5>${details.price}/{t('night')}</h5>
+              <p>{t(details.description)}</p>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">{t('close')}</button>
               <Link to='/Booking'>
-                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={proceedToNextStep(details)}>Next</button>
+                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={proceedToNextStep(details)}>{t('next')}</button>
               </Link>
             </div>
           </div>
