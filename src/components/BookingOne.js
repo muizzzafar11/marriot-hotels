@@ -7,7 +7,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useTranslation } from 'react-i18next';
 
 export default function BookingOne() {
     const [floor, setFloor] = React.useState('');
@@ -25,47 +24,46 @@ export default function BookingOne() {
     const [checkin, setCheckin] = React.useState(null);
     const [checkout, setCheckout] = React.useState(null);
 
-    const { t } = useTranslation();
     return (
         <div>
             <FormControl fullWidth className='mb-4'>
-                <InputLabel id="demo-simple-select-label">{t('floors')}</InputLabel>
+                <InputLabel id="demo-simple-select-label">Floors</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={floor}
-                    label={t('floors')}
+                    label="Floors"
                     onChange={handleFloorChange}
                 >
-                    <MenuItem value={1}>{t('floors')} 1</MenuItem>
-                    <MenuItem value={2}>{t('floors')} 2</MenuItem>
-                    <MenuItem value={3}>{t('floors')} 3</MenuItem>
-                    <MenuItem value={4}>{t('floors')} 4</MenuItem>
-                    <MenuItem value={5}>{t('floors')} 5</MenuItem>
+                    <MenuItem value={1}>Floor 1</MenuItem>
+                    <MenuItem value={2}>Floor 2</MenuItem>
+                    <MenuItem value={3}>Floor 3</MenuItem>
+                    <MenuItem value={4}>Floor 4</MenuItem>
+                    <MenuItem value={5}>Floor 5</MenuItem>
                 </Select>
             </FormControl>
 
             <FormControl fullWidth className='mb-4'>
-                <InputLabel id="demo-simple-select-label">{t('person')}</InputLabel>
+                <InputLabel id="demo-simple-select-label">Person</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={person}
-                    label={t('person')}
+                    label="Person"
                     onChange={handlePersonChange}
                 >
-                    <MenuItem value={1}>1 {t('person')}</MenuItem>
-                    <MenuItem value={2}>2 {t('person')}</MenuItem>
-                    <MenuItem value={3}>3 {t('person')}</MenuItem>
-                    <MenuItem value={4}>4 {t('person')}</MenuItem>
-                    <MenuItem value={5}>5 {t('person')}</MenuItem>
+                    <MenuItem value={1}>1 Person</MenuItem>
+                    <MenuItem value={2}>2 Person</MenuItem>
+                    <MenuItem value={3}>3 Person</MenuItem>
+                    <MenuItem value={4}>4 Person</MenuItem>
+                    <MenuItem value={5}>5 Person</MenuItem>
                 </Select>
             </FormControl>
 
             <div className='d-flex'>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
-                        label={t('checkin')}
+                        label="Checkin"
                         value={checkin}
                         shouldDisableDate={(date) => date.getTime() < Date.now()}
                         onChange={(newValue) => {
@@ -78,7 +76,7 @@ export default function BookingOne() {
                 <p className='my-auto mx-3'>to</p>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
-                        label={t('checkout')}
+                        label="Checkout"
                         value={checkout}
                         shouldDisableDate={(date) => date.getTime() <= checkin || date.getTime() < Date.now()}
                         onChange={(newValue) => {

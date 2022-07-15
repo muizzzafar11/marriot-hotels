@@ -11,17 +11,10 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import i18next from 'i18next';
-import { useTranslation } from 'react-i18next';
+
+const pages = ['Home', 'Bookings', 'Reviews', 'About'];
 
 const NavTab = () => {
-  const { t } = useTranslation()
-
-  const pages = ['Home', 'Bookings', 'Reviews', 'About'];
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -31,14 +24,6 @@ const NavTab = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  const langVal = i18next.language;
-  const [lan, setLan] = React.useState(langVal);
-  const lanChange = (event) => {
-    setLan(event.target.value);
-    i18next.changeLanguage(event.target.value);
-  }
-
 
   return (
     <AppBar sx={{ bgcolor: "white" }} position="sticky">
@@ -112,23 +97,10 @@ const NavTab = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link style={{textDecoration: 'none', color: "#198754"}} to={`/${page}`}>{t(page)}</Link>
+                    <Link style={{textDecoration: 'none', color: "#198754"}} to={`/${page}`}>{page}</Link>
                   </Typography>
                 </MenuItem>
               ))}
-              <FormControl sx={{ m: 1, minWidth: 50 }} size="small">
-                <InputLabel id="language-select-label">language</InputLabel>
-                <Select
-                  labelId="language-select-label"
-                  id="language-select"
-                  value={lan}
-                  label="language"
-                  onChange={lanChange}
-                >
-                  <MenuItem value={'en'}>English</MenuItem>
-                  <MenuItem value={'fr'}>French</MenuItem>
-                </Select>
-              </FormControl>
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'flex-end' } }}>
@@ -139,23 +111,10 @@ const NavTab = () => {
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 <Link style={{textDecoration: 'none', color: "#198754"}} to={`/${page}`}>
-                  {t(page)}
+                  {page}
                 </Link>
               </Button>
             ))}
-            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-              <InputLabel id="language-select-label">language</InputLabel>
-              <Select
-                labelId="language-select-label"
-                id="language-select"
-                value={lan}
-                label="language"
-                onChange={lanChange}
-              >
-                <MenuItem value={'en'}>English</MenuItem>
-                <MenuItem value={'fr'}>French</MenuItem>
-              </Select>
-            </FormControl>
           </Box>
         </Toolbar>
       </Container>

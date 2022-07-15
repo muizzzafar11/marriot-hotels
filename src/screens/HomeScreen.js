@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useTranslation } from "react-i18next";
-
 import homeImageMobile from '../assets/home-image-mobile.png';
 import homeImage from '../assets/home-image-text-2.png'
 import marriotImage from '../assets/marriot-image.png'
@@ -13,7 +11,6 @@ import parking from '../assets/parking.png'
 import RoomCards from '../components/RoomCards';
 
 export default function HomeScreen() {
-    const { t } = useTranslation();
     return (
       <div className='page-body'>
         <div className=''>
@@ -21,37 +18,38 @@ export default function HomeScreen() {
           <img className="img-fluid d-none d-md-block col" src={homeImage} alt="logo" />
         </div>
         <div className='row mt-4'>
-          <div className='col-12 col-md-7 mt-1 pt-4'>
-          <p style={{fontSize: 28}}>
-            {t('description')}
-          </p>
-          <ul style={{fontSize: 28}}>
+          <p className='col-12 col-md-7 mt-1 pt-4' style={{fontSize: 28}}>
+            Marriot Hotels are one of the finest 5 star hotels available in the country. 
+            We offer everything you need to enjoy your vacation in an unknown place. 
+            Find your home away from home with exceptional views and fine delicacies. Some of the facilities we offer are:
+            <ul>
               <li>
-                {t('pool')} 
+                Pool 
                 <img className='img-fluid' style={{width: 40, marginLeft: 5}} src={swimming}></img>
               </li>
               <li>
-                {t('ac')} 
+                Air Conditioning
                 <img className='img-fluid' style={{width: 40 , marginLeft: 10}} src={ac}></img>
               </li>
               <li>
-                {t('wifi')} 
+                Wi-Fi
                 <img className='img-fluid' style={{width: 25, marginLeft: 10}} src={wifi}></img>
               </li>
               <li>
-                {t('room_service')} 
+                24-hour Room Service
                 <img className='img-fluid' style={{width: 30 , marginLeft: 10}} src={dinner}></img>
               </li>
               <li>
-                {t('parking')} 
+                Free Parking
                 <img className='img-fluid' style={{width: 25 , marginLeft: 10}} src={parking}></img>
               </li>
             </ul>
-          </div>
+                  
+          </p>
           <img className='col-12 col-md-5 img-fluid pt-4' src={marriotImage}></img>
         </div>
         <div>
-          <h1 className='text-center mt-4 py-4'>{t('rooms_heading')}</h1>
+          <h1 className='text-center mt-4 py-4'>Available suites and rooms</h1>
           <RoomCards/>
         </div>
       </div>
