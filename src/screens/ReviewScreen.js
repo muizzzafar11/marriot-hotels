@@ -20,7 +20,7 @@ export default function ReviewScreen() {
                 <input type="text" onInput={e => {setEmail(e.target.value)}} aria-label="Email" placeholder="Email" className="form-control px-4 py-3 mt-3"></input>
                 <input type="text" onInput={e => {setPhone(e.target.value)}} aria-label="Phone Number" placeholder="Phone Number" className="form-control px-4 py-3 mt-3"></input>
             </div>
-            <button className='btn btn-success mt-4' onClick={() => {
+            <button className='btn btn-success' onClick={() => {
                 var existingEntries = JSON.parse(localStorage.getItem("allEntries")) || [];
                 var entry = {
                     "description": description,
