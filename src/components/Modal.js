@@ -9,7 +9,7 @@ export default function BasicModal(props) {
       <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Select
       </button>
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <img className="" style={{height: 250}} src={details.image} alt="logo" />
