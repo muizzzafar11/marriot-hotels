@@ -17,7 +17,6 @@ export default function BasicModal(props) {
             <div className="modal-body text-start">
               <h5>{t(details.name)}</h5>
               <h5>${details.price}/{t('night')}</h5>
-              {/* <p>{t(details.description)}</p> */}
               {t(details.description).split('<br>').map((item, index) => {
                 return <p style={{margin: 5}} key={index}>{item}</p>
               })}
@@ -25,7 +24,10 @@ export default function BasicModal(props) {
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">{t('close')}</button>
               <Link to='/Booking'>
-                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={proceedToNextStep(details)}>{t('next')}</button>
+                {/* <button type="button" id="next-btn" className="next-btn btn btn-success" data-bs-dismiss="modal" onClick={proceedToNextStep(details)}>{t('next')}</button> */}
+                <button type="button" id="next-btn" className="next-btn btn btn-success" data-bs-dismiss="modal" onClick={() => {
+                  localStorage.setItem('selectedRoom', JSON.stringify(details));
+                }}>{t('next')}</button>
               </Link>
             </div>
           </div>
@@ -36,5 +38,5 @@ export default function BasicModal(props) {
 }
 
 function proceedToNextStep(details) {
-    localStorage.setItem('selectedRoom', JSON.stringify(details));    
+    localStorage.setItem('selectedRoom'+details.name, JSON.stringify(details));
 }

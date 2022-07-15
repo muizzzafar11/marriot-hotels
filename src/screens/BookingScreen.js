@@ -72,7 +72,11 @@ export default function BookingScreen() {
 
             <h1 className='mt-5'>{t(roomDetails.name)}</h1>
             <h3>${roomDetails.price}/{t('night')}</h3>
-            <p className='my-4' style={{fontSize: 22}}>{t(roomDetails.description)}</p>
+            <div className='my-4'>
+                {t(roomDetails.description).split('<br>').map((item, index) => {
+                    return <p style={{margin: 5, fontSize: 22}} key={index}>{item}</p>
+                })}
+            </div>
 
             <div className='mt-4'>
                 {renderDiv}
