@@ -5,7 +5,6 @@ import Home from './screens/HomeScreen';
 import About from './screens/AboutScreen';
 import Reviews from './screens/ReviewScreen';
 import Booking from './screens/BookingScreen';
-import RoomsBooking from './screens/RoomsBookingScreen'
 import Receipt from './screens/ReceiptScreen';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
           <Route path="/Reviews" element={<Reviews/>}/>
           <Route path="/Booking" element={<Booking/>}/>
           <Route path="/Receipt" element={<Receipt/>}/>
-          <Route path="/Bookings" element={<RoomsBooking/>}/>
         </Routes>
     </div>
   );
