@@ -7,6 +7,7 @@ import Reviews from './screens/ReviewScreen';
 import Booking from './screens/BookingScreen';
 import RoomsBooking from './screens/RoomsBookingScreen'
 import Receipt from './screens/ReceiptScreen';
+import FAQScreen from './screens/FAQScreen';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/Booking" element={<Booking/>}/>
           <Route path="/Receipt" element={<Receipt/>}/>
           <Route path="/Bookings" element={<RoomsBooking/>}/>
+          <Route path="/FAQ" element={<FAQScreen/>}/>
         </Routes>
     </div>
   );

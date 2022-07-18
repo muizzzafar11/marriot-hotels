@@ -17,15 +17,10 @@ import Select from '@mui/material/Select';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-import homeImageMobile from '../assets/home-image-mobile.png';
-import homeImage from '../assets/home-image-text-2.png'
-import homeImageFrench from '../assets/home-image-french.png'
-import homeImageMobileFrench from '../assets/home-image-french-mobile.png'
-
 const NavTab = () => {
   const { t } = useTranslation()
 
-  const pages = ['Home', 'Bookings', 'Reviews', 'About'];
+  const pages = ['Home', 'Bookings', 'Reviews', 'About', 'FAQ'];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -42,8 +37,6 @@ const NavTab = () => {
   const lanChange = (event) => {
     setLan(event.target.value);
     i18next.changeLanguage(event.target.value);
-    // imageData[0].source = homeImageFrench
-    // imageData[1].source = homeImageMobileFrench
   }
 
 
