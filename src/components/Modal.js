@@ -7,7 +7,9 @@ export default function BasicModal(props) {
   const { t } = useTranslation();
   return (
     <div>
-      <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target={"#exampleModal"+details.name}>
+      <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target={"#exampleModal"+details.name} onClick={() => {
+        window.localStorage.clear();
+      }}>
         {t('book')}
       </button>
       <div className="modal fade" id={"exampleModal"+details.name} tabIndex="-1" aria-labelledby={"exampleModal"+details.name+"Label"} aria-hidden="true">

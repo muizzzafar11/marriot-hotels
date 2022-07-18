@@ -10,20 +10,20 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useTranslation } from 'react-i18next';
 
 export default function BookingOne() {
-    const [floor, setFloor] = React.useState('');
+    const [floor, setFloor] = React.useState(window.localStorage.getItem('floor') || '');
     const handleFloorChange = (event) => {
         setFloor(event.target.value);
         window.localStorage.setItem('floor', event.target.value);
       };
 
-    const [person, setPerson] = React.useState('');
+    const [person, setPerson] = React.useState(window.localStorage.getItem('person') || '');
     const handlePersonChange = (event) => {
         setPerson(event.target.value);
         window.localStorage.setItem('person', event.target.value);
     };
 
-    const [checkin, setCheckin] = React.useState(null);
-    const [checkout, setCheckout] = React.useState(null);
+    const [checkin, setCheckin] = React.useState(window.localStorage.getItem('checkin') || null);
+    const [checkout, setCheckout] = React.useState(window.localStorage.getItem('checkout') || null);
 
     const { t } = useTranslation();
     return (

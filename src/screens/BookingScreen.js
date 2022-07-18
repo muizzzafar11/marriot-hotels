@@ -4,7 +4,7 @@ import BookingOne from '../components/BookingOne';
 import BookingTwo from '../components/BookingTwo';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const style = {
@@ -23,10 +23,12 @@ export default function BookingScreen() {
     const [showBookingOne, setShowBookingOne] = React.useState(true);
     const [showBookingTwo, setShowBookingTwo] = React.useState(false);
     const [renderDiv, setRenderDiv] = React.useState(<BookingOne />);
+    const [renderStage, setRenderStage] = React.useState(1);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const { t } = useTranslation();
+    const navigate = useNavigate()
     
     return (
         
@@ -80,12 +82,23 @@ export default function BookingScreen() {
 
             <div className='mt-4'>
                 {renderDiv}
+                <div>
+                <button className='btn btn-secondary mt-4 px-5 py-2 me-3' onClick={() => {
+                    if(renderStage === 2) {
+                        setRenderDiv(<BookingOne />)
+                        setShowBookingOne(true)
+                    } else if(renderStage === 1) {
+                        window.localStorage.clear()
+                        navigate('/Home')
+                    }
+                }}>{t('back')}</button>
                 <button className='btn btn-success mt-4 px-5 py-2' onClick={() => {
                     if(showBookingOne) {
                         if(checkValidity(1)){
                             setShowBookingOne(false)
                             setShowBookingTwo(true)
                             setRenderDiv(<BookingTwo />)
+                            setRenderStage(2)
                         } else {
                             alert('Please fill all the fields correctly')
                         }
@@ -96,6 +109,7 @@ export default function BookingScreen() {
                             alert('Please fill all the fields correctly')
                     }
                 }}>{t('next')}</button>
+                </div>
             </div>
 
         </div>
